@@ -13,8 +13,6 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "@material-ui/core": "^3.5.1",
     "@material-ui/icons": "^3.0.1",
-    "@openware/components": "file:./openware/components",
-    "@openware/cryptofont": "file:./openware/cryptofont",
     "apexcharts": "^2.4.1",
     "autoprefixer": "9.4.2",
     "availity-reactstrap-validation": "^2.3.3",
