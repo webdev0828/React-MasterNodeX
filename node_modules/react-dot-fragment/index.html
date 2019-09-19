@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>React Dot Fragment</title>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+      body {
+        margin: 1.4rem;
+      }
+      ul {
+        margin: 1rem;
+        background: rgb(245, 245, 255);
+        padding-bottom: 1rem;
+      }
+      a,
+      ul li {
+        font-style: italic;
+        font-size: 32px;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      ul li a {
+        color: inherit;
+      }
+      h1 a,
+      pre a {
+        font-size: inherit;
+      }
+      h1 a {
+        color: inherit;
+      }
+      .footer {
+        margin-top: 2rem;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="header">
+      <a href="https://github.com/benwiley4000/react-dot-fragment">
+        React Dot Fragment
+      </a>
+      (React v{version})
+    </h1>
+    <ul class="list"></ul>
+    <a href="https://www.npmjs.com/package/react-dot-fragment">
+      npm install react-dot-fragment
+    </a>
+    <h5>This container...</h5>
+    <pre class="container-markup"></pre> 
+    <h5>And this code...</h5>
+    <pre class="code"></pre>
+    <h5>Turns into...</h5>
+    <br>
+    <pre class="markup"></pre>
+
+    <section class="footer">
+      Thanks to <a href="https://getbootstrap.com/">Bootstrap</a> for the styles
+      and to <a href="https://www.lexaloffle.com/pico-8.php">PICO-8</a> for the
+      palette.
+    </section>
+
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+
+    <script src="index.js"></script>
+    <script>
+      var header = document.querySelector('.header');
+      header.innerHTML = header.innerHTML.replace('{version}', React.version);
+
+      document.querySelector('.container-markup').innerText =
+        document.querySelector('.list').outerHTML;
+    </script>
+    <script id="fragment">
+React.Fragment = React.Fragment || Fragment;
+ReactDOM.render(
+  React.createElement(
+    React.Fragment,
+    {},
+    React.createElement(
+      'li',
+      { style: { color: 'rgb(255, 0, 77)' } },
+      'how'
+    ),
+    React.createElement(
+      'li',
+      { style: { color: 'rgb(266, 163, 0)' } },
+      'does'
+    ),
+    React.createElement(
+      'li',
+      { style: { color: 'rgb(255, 236, 39)' } },
+      'it'
+    ),
+    React.createElement(
+      'li',
+      { style: { color: 'rgb(0, 228, 54)' } },
+      React.createElement(
+        'a',
+        { href: 'https://github.com/benwiley4000/react-dot-fragment/blob/master/index.js' },
+        'work'
+      )
+    ),
+  ),
+  document.querySelector('.list')
+);
+    </script>
+    <script>
+      setTimeout(function() { // wait a moment
+        document.querySelector('.code').innerText =
+          document.getElementById('fragment').innerText;
+        document.querySelector('.code').innerHTML =
+          document.querySelector('.code').innerHTML
+            .replace(
+              '= React.Fragment',
+              '= <a href="https://reactjs.org/docs/fragments.html">React.Fragment</a>'
+            );
+        document.querySelector('.markup').innerText =
+          document.querySelector('.list').outerHTML.split('><').join('>\n<');
+      });
+    </script>
+  </body>
+</html>
